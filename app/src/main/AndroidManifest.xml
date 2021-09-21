@@ -10,7 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignmentAndroidAdvanced">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SocialActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.NewsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CourseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.LauncherActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
