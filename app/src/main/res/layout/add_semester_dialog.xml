@@ -29,6 +29,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:editable="false"
             android:id="@+id/edtSemesterStartDate"
             android:hint="Start Date"
             android:layout_width="match_parent"
@@ -46,6 +47,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtSemesterEndDate"
+            android:editable="false"
             android:hint="End date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
