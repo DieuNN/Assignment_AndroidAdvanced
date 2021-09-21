@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_schedule"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="Schedule" />
+    <item
+        android:id="@+id/menu_class"
+        android:icon="@drawable/class_icon"
+        android:title="Class" />
+    <item
+        android:id="@+id/menu_course"
+        android:icon="@drawable/online_course"
+        android:title="Course" />
+
+    <item
+        android:id="@+id/menu_semester"
+        android:icon="@drawable/semester"
+        android:title="Semester" />
+</menu>
