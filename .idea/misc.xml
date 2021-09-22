@@ -10,13 +10,20 @@
         <entry key="app/src/main/res/layout/activity_map.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_news.xml" value="0.16312056737588654" />
         <entry key="app/src/main/res/layout/activity_social.xml" value="0.16312056737588654" />
+        <entry key="app/src/main/res/layout/add_class_dialog.xml" value="0.1697061803444782" />
+        <entry key="app/src/main/res/layout/add_course_dialog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/add_schedule_dialog.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/add_schedule_time.xml" value="0.12318840579710146" />
         <entry key="app/src/main/res/layout/add_semester_dialog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/class_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/course_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_class.xml" value="0.14356884057971014" />
         <entry key="app/src/main/res/layout/fragment_course.xml" value="0.14356884057971014" />
         <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_semester.xml" value="0.22" />
         <entry key="app/src/main/res/layout/main_activity_card_layout.xml" value="0.1621376811594203" />
         <entry key="app/src/main/res/layout/main_activity_item_card_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/schedule_item.xml" value="0.45" />
         <entry key="app/src/main/res/layout/semester_item.xml" value="0.33" />
         <entry key="app/src/main/res/menu/bottom_course_menu.xml" value="0.1859375" />
       </map>

@@ -117,7 +117,7 @@ class SemesterFragment : Fragment() {
         }.create().show()
     }
 
-    companion object fun controlIsEmptyText() {
+    private fun controlIsEmptyText() {
         if (semesterDB.getAllSemesters().isEmpty()) {
             binding.txtIsSemesterEmpty.visibility = View.VISIBLE
         } else {

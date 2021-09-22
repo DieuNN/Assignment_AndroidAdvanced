@@ -7,7 +7,7 @@ import com.example.assignmentandroidadvanced.model.Schedule
 class ScheduleDB(private val db:Database): ISchedule {
     private val database = db.writableDatabase
     override fun newSchedule(
-        id: Int,
+        id: Int?,
         semesterName: String,
         className: String,
         courseName: String,
@@ -28,27 +28,7 @@ class ScheduleDB(private val db:Database): ISchedule {
         return database.insert(Database.TABLE_SCHEDULE, null, contentValues) > 0
     }
 
-    override fun editSchedule(
-        id: Int,
-        semesterName: String,
-        className: String,
-        courseName: String,
-        fromHour: String,
-        toHour: String,
-        note: String
-    ): Boolean {
-        val contentValues = ContentValues()
-        contentValues.apply {
-            put("ID", id)
-            put("SEMESTER_NAME", semesterName)
-            put("CLASS_NAME", className)
-            put("COURSE_NAME", courseName)
-            put("FROM_HOUR", fromHour)
-            put("TO_HOUR", toHour)
-            put("NOTE", note)
-        }
-        return database.update(Database.TABLE_SCHEDULE, contentValues, "ID = ?", arrayOf(id.toString())) > 0
-    }
+
 
     override fun removeSchedule(id: Int):Boolean {
         return database.delete(Database.TABLE_SCHEDULE, "ID = ?", arrayOf(id.toString())) > 0

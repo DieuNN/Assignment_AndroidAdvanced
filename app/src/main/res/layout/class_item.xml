@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:id="@+id/relativeLayoutClassItem">
+
+    <TextView
+        android:id="@+id/txtClassItemName"
+        android:textStyle="bold"
+        android:textSize="10pt"
+        android:text="Class name:fsdfwedf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/txtClassItemName"
+        android:id="@+id/txtClassItemSemesterName"
+        android:text="Semester:  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/txtClassItemSemesterName"
+        android:id="@+id/txtClassItemNote"
+        android:text="note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/btnEditClass"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</RelativeLayout>

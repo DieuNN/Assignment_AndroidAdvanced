@@ -23,11 +23,11 @@ class ClassDB(private val db:Database):IClass {
             put("SEMESTER_NAME", semesterName)
             put("NOTE", note)
         }
-        return database.update(Database.TABLE_CLASS, null, "CLASS_NAME", arrayOf(name)) > 0
+        return database.update(Database.TABLE_CLASS, contentValue, "CLASS_NAME = ?", arrayOf(name)) > 0
     }
 
     override fun removeClass(name: String): Boolean {
-        return database.delete(Database.TABLE_CLASS, "CLASS_NAME", arrayOf(name)) > 0
+        return database.delete(Database.TABLE_CLASS, "CLASS_NAME = ?", arrayOf(name)) > 0
     }
 
     override fun getAllClasses(): ArrayList<Class> {

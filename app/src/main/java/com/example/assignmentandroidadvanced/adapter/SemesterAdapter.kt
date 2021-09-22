@@ -2,7 +2,6 @@ package com.example.assignmentandroidadvanced.adapter
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
@@ -14,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.assignmentandroidadvanced.R
 import com.example.assignmentandroidadvanced.database.Database
 import com.example.assignmentandroidadvanced.database.SemesterDB
-import com.example.assignmentandroidadvanced.fragment.SemesterFragment
+import com.example.assignmentandroidadvanced.model.Class
+import com.example.assignmentandroidadvanced.model.Schedule
 import com.example.assignmentandroidadvanced.model.Semester
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
@@ -55,6 +55,8 @@ class SemesterAdapter(
                 val startDate = view.findViewById<TextView>(R.id.edtSemesterStartDate)
                 val endDate = view.findViewById<TextView>(R.id.edtSemesterEndDate)
                 val note = view.findViewById<TextView>(R.id.edtSemesterNote)
+
+
 
                 val startDateLayout =
                     view.findViewById<TextInputLayout>(R.id.edtLayoutSemesterStartDate)
