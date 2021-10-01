@@ -26,7 +26,7 @@ class NewsItemAdapter(
 
         title.text = newsList[position].title
         des.text = newsList[position].description
-        Picasso.get().load(newsList[position].imageLink).error(R.drawable.no_image_available).into(image)
+        Picasso.get().load(newsList[position].imageLink).resize(150, 150).error(R.drawable.no_image_available).into(image)
 
         return view
     }
