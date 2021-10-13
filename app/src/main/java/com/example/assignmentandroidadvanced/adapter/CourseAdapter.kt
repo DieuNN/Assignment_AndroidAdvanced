@@ -37,11 +37,11 @@ class CourseAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.courseName.text = courseList[position].name
-        holder.className.text = courseList[position].className
-        holder.startDate.text = courseList[position].startDay
-        holder.endDate.text = courseList[position].endDay
-        holder.note.text = courseList[position].note
+        holder.courseName.text = "Tên khóa học: ${courseList[position].name}"
+        holder.className.text = "Tên lớp: ${courseList[position].className}"
+        holder.startDate.text = "Ngày bắt đầu: ${courseList[position].startDay}"
+        holder.endDate.text = "Ngày kết thúc: ${courseList[position].endDay}"
+        holder.note.text = "Ghi chú: ${courseList[position].note}"
 
         holder.btnEdit.setOnClickListener {
             AlertDialog.Builder(mContext).apply {
@@ -106,11 +106,11 @@ class CourseAdapter(
                 endDate.text = courseList[position].endDay
                 note.text = courseList[position].note
 
-                setMessage("Edit Course!")
-                setNegativeButton("Cancel") { dialog, _ ->
+                setMessage(mContext.getText(R.string.edit_course))
+                setNegativeButton(mContext.getText(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("OK") { _, _ ->
+                setPositiveButton(mContext.getText(R.string.edit)) { _, _ ->
                     insertIntoDatabase(
                         name.text.toString(),
                         className?.selectedItem.toString(),
@@ -127,20 +127,20 @@ class CourseAdapter(
 
         holder.courseItem.setOnLongClickListener {
             AlertDialog.Builder(mContext).apply {
-                setTitle("Delete course?")
-                setNegativeButton("Cancel") {dialog, _ ->
+                setTitle(mContext.getText(R.string.delete_course))
+                setNegativeButton(mContext.getText(R.string.cancel)) {dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("OK") {_, _ ->
+                setPositiveButton(mContext.getText(R.string.delete)) {_, _ ->
                     val courseDB = CourseDB(Database(mContext))
                     if(courseDB.removeCourse(courseList[position].name)) {
-                        Toast.makeText(mContext, "Deleted!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.delete_successfully), Toast.LENGTH_SHORT).show()
                         this@CourseAdapter.notifyItemRemoved(position)
                         courseList.clear()
                         courseList = courseDB.getAllCourse()
                         this@CourseAdapter.notifyItemRangeChanged(position, courseList.size)
                     } else {
-                        Toast.makeText(mContext, "Delete failed!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.delete_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             }.create().show()
@@ -155,11 +155,11 @@ class CourseAdapter(
     private fun insertIntoDatabase(name: String,className:String, startDay: String, endDay: String, note: String) {
         val courseDB = CourseDB(Database(mContext))
         if (courseDB.editCourse(name,className, startDay, endDay, note)) {
-            Toast.makeText(mContext, "Edit successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, mContext.getText(R.string.edit_successfully), Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(
                 mContext,
-                "Edit failed! You changed course name? Remove it and add it again!",
+                mContext.getText(R.string.edit_failed),
                 Toast.LENGTH_SHORT
             ).show()
         }

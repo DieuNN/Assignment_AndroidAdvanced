@@ -59,7 +59,8 @@ class ScheduleFragment : Fragment() {
 
     private fun addSchedule() {
         AlertDialog.Builder(requireContext()).apply {
-            setMessage("Add new semester!")
+            setTitle(requireContext().getString(R.string.add_semester))
+            setMessage(requireContext().getText(R.string.spinner_hint))
             val view =
                 LayoutInflater.from(requireContext()).inflate(R.layout.add_schedule_dialog, null)
 
@@ -123,17 +124,18 @@ class ScheduleFragment : Fragment() {
 
 
             setView(view)
-            setNegativeButton("Cancel") { dialog, _ ->
+            setNegativeButton(requireContext().getText(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
-            setPositiveButton("Add") { _, _ ->
+            setPositiveButton(requireContext().getText(R.string.add)) { _, _ ->
                 if (endTime.text.isNullOrBlank() || startTime.text.isNullOrBlank() || note.text.isNullOrBlank()) {
-                    Toast.makeText(requireContext(), "Start time, end time or note is blank", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), requireContext().getText(R.string.information_must_not_empty), Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 } else {
 //                    Toast.makeText(requireContext(), "${semesterName.selectedItem.toString()}, ${className.selectedItem.toString()}, ${courseName.selectedItem.toString()} ,${startTime.text.toString()}, ${endTime.text.toString()}, ${note.text.toString()}", Toast.LENGTH_SHORT).show()
                     insertIntoDatabase(semesterName.selectedItem.toString(), className.selectedItem.toString(), courseName.selectedItem.toString() ,startTime.text.toString(), endTime.text.toString(), note.text.toString())
                     setupListView()
+                    controlIsEmptyText()
                 }
             }
 
@@ -143,9 +145,9 @@ class ScheduleFragment : Fragment() {
     private fun insertIntoDatabase(semesterName:String, className:String,courseName:String, fromHour:String, toHour:String, note:String) {
         val scheduleDB = ScheduleDB(Database(requireContext()))
         if(scheduleDB.newSchedule(null, semesterName = semesterName, className = className, courseName = courseName, fromHour = fromHour, toHour = toHour, note = note)) {
-            Toast.makeText(requireContext(), "Add successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_successfully), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(requireContext(), "Add failed!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_failed), Toast.LENGTH_SHORT).show()
         }
     }
 

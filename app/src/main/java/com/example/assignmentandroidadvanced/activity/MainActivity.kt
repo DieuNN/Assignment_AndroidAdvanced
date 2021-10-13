@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupMainActivity() {
         itemList = ArrayList<CardItem>()
-        itemList.add(CardItem("Course", R.drawable.course_icon))
-        itemList.add(CardItem("Map", R.drawable.map_icon))
-        itemList.add(CardItem("News", R.drawable.news_icon))
-        itemList.add(CardItem("Social", R.drawable.social_icons))
+        itemList.add(CardItem(baseContext.getString(R.string.course), R.drawable.course_icon))
+        itemList.add(CardItem(baseContext.getString(R.string.map), R.drawable.map_icon))
+        itemList.add(CardItem(baseContext.getString(R.string.news), R.drawable.news_icon))
+        itemList.add(CardItem(baseContext.getString(R.string.social), R.drawable.social_icons))
 
 
         binding.rcvMainActivity.apply {

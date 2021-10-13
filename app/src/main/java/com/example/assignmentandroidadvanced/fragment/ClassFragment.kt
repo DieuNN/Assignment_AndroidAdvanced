@@ -88,14 +88,14 @@ class ClassFragment : Fragment() {
             semesterName.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_dropdown_item_1line, semesterList)
 
             setView(view)
-            setTitle("Add class!")
-            setMessage("Hint:If no semester available, add semester and try again!")
-            setNegativeButton("Cancel") { dialog, _ ->
+            setTitle(requireContext().getText(R.string.add_class))
+            setMessage(requireContext().getText(R.string.spinner_hint))
+            setNegativeButton(requireContext().getText(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
-            setPositiveButton("Add") {_, _->
+            setPositiveButton(requireContext().getText(R.string.add)) { _, _->
                 if(className.text.isNullOrBlank() || semesterName.isEmpty() || note.text.isNullOrBlank()) {
-                    Toast.makeText(requireContext(), "Empty!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), requireContext().getText(R.string.information_must_not_empty), Toast.LENGTH_SHORT).show()
                 } else {
                     insertIntoDatabase(className.text.toString(), semesterName.selectedItem.toString(), note.text.toString())
                     setupListView()
@@ -107,10 +107,10 @@ class ClassFragment : Fragment() {
     private fun insertIntoDatabase(className:String, semesterName:String, note:String) {
         val classDB = ClassDB(Database(requireContext()))
         if(classDB.newClass(className, semesterName, note)) {
-            Toast.makeText(requireContext(), "Add successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_successfully), Toast.LENGTH_SHORT).show()
             controlIsEmptyText()
         } else {
-            Toast.makeText(requireContext(), "Add successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_failed), Toast.LENGTH_SHORT).show()
         }
     }
 

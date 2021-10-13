@@ -58,8 +58,8 @@ class CourseFragment : Fragment() {
 
     private fun addCourse() {
         AlertDialog.Builder(requireContext()).apply {
-            setTitle("Add new course!")
-            setMessage("Hint: If there is no class, check whether you added class before!")
+            setTitle(requireContext().getText(R.string.add_course))
+            setMessage(requireContext().getText(R.string.spinner_hint))
             val view =
                 LayoutInflater.from(requireContext()).inflate(R.layout.add_course_dialog, null)
 
@@ -116,16 +116,16 @@ class CourseFragment : Fragment() {
             }
 
             setView(view)
-            setNegativeButton("Cancel") { dialog, _ ->
+            setNegativeButton(requireContext().getText(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
-            setPositiveButton("Add") { _, _ ->
+            setPositiveButton(requireContext().getText(R.string.add)) { _, _ ->
                 if (name.text!!.isBlank() || startDate.text!!.isBlank() || endDate.text!!.isBlank() || note.text!!.isBlank()) {
-                    Toast.makeText(requireContext(), "Empty!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), requireContext().getText(R.string.information_must_not_empty), Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
                 if(className.selectedItem == null) {
-                    Toast.makeText(requireContext(), "You didn't choose class name!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), requireContext().getText(R.string.information_must_not_empty), Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
 
@@ -158,11 +158,11 @@ class CourseFragment : Fragment() {
 
     private fun insertIntoDatabase(name: String,className:String    , startDate: String, endDate: String, note: String) {
         if (courseDB.newCourse(name,className, startDate, endDate, note)) {
-            Toast.makeText(requireContext(), "Added successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_successfully), Toast.LENGTH_SHORT).show()
             controlIsEmptyText()
             setupListView()
         } else {
-            Toast.makeText(requireContext(), "Semester has already added", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_failed), Toast.LENGTH_SHORT)
                 .show()
         }
     }

@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.assignmentandroidadvanced.R
 import com.example.assignmentandroidadvanced.database.Database
 import com.example.assignmentandroidadvanced.database.SemesterDB
-import com.example.assignmentandroidadvanced.model.Class
-import com.example.assignmentandroidadvanced.model.Schedule
 import com.example.assignmentandroidadvanced.model.Semester
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
-import kotlin.collections.ArrayList
 
 class SemesterAdapter(
     private val mContext: Context,
@@ -40,10 +37,10 @@ class SemesterAdapter(
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: SemesterAdapter.ViewHolder, position: Int) {
-        holder.name.text = "Name: ${semesterList[position].name}"
-        holder.startDate.text = "Start day:${semesterList[position].startDay} "
-        holder.endDate.text = "End day: ${semesterList[position].endDay}"
-        holder.note.text = "Note: ${semesterList[position].note}"
+        holder.name.text = "Tên: ${semesterList[position].name}"
+        holder.startDate.text = "Ngày bắt đầu:${semesterList[position].startDay} "
+        holder.endDate.text = "Ngày kết thúc: ${semesterList[position].endDay}"
+        holder.note.text = "Ghi chú: ${semesterList[position].note}"
 
         holder.btnEdit.setOnClickListener {
             AlertDialog.Builder(mContext).apply {
@@ -55,8 +52,6 @@ class SemesterAdapter(
                 val startDate = view.findViewById<TextView>(R.id.edtSemesterStartDate)
                 val endDate = view.findViewById<TextView>(R.id.edtSemesterEndDate)
                 val note = view.findViewById<TextView>(R.id.edtSemesterNote)
-
-
 
                 val startDateLayout =
                     view.findViewById<TextInputLayout>(R.id.edtLayoutSemesterStartDate)
@@ -101,11 +96,11 @@ class SemesterAdapter(
                 endDate.text = semesterList[position].endDay
                 note.text = semesterList[position].note
 
-                setMessage("Edit semester")
-                setNegativeButton("Cancel") { dialog, _ ->
+                setMessage(mContext.getText(R.string.edit_semester))
+                setNegativeButton(mContext.getText(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("OK") { _, _ ->
+                setPositiveButton(mContext.getText(R.string.edit)) { _, _ ->
                     insertIntoDatabase(
                         name.text.toString(),
                         startDate.text.toString(),
@@ -122,13 +117,17 @@ class SemesterAdapter(
         holder.item.setOnLongClickListener {
             val semesterDB = SemesterDB(Database(mContext))
             AlertDialog.Builder(mContext).apply {
-                setMessage("Delete this semester?")
-                setNegativeButton("Cancel") {dialog, _ ->
+                setMessage(mContext.getText(R.string.confirm_delete))
+                setNegativeButton(mContext.getText(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("Delete") {_,_ ->
+                setPositiveButton(mContext.getText(R.string.delete)) { _, _ ->
                     if (semesterDB.removeSemester(semesterList[position].name)) {
-                        Toast.makeText(mContext, "Delete successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            mContext,
+                            mContext.getText(R.string.delete_successfully),
+                            Toast.LENGTH_SHORT
+                        ).show()
                         // notify item removed
                         this@SemesterAdapter.notifyItemRemoved(position)
                         semesterList.clear()
@@ -136,7 +135,11 @@ class SemesterAdapter(
                         // notify range changed, if not it will be IndexOutOfBoundException
                         this@SemesterAdapter.notifyItemRangeChanged(position, semesterList.size)
                     } else {
-                        Toast.makeText(mContext, "Delete failed!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            mContext,
+                            mContext.getText(R.string.delete_failed),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }.create().show()
@@ -152,11 +155,15 @@ class SemesterAdapter(
     private fun insertIntoDatabase(name: String, startDay: String, endDay: String, note: String) {
         val semesterDB = SemesterDB(Database(mContext))
         if (semesterDB.editSemester(name, startDay, endDay, note)) {
-            Toast.makeText(mContext, "Edit successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                mContext,
+                mContext.getText(R.string.edit_successfully),
+                Toast.LENGTH_SHORT
+            ).show()
         } else {
             Toast.makeText(
                 mContext,
-                "Edit failed! You changed semester name? Remove it and add it again!",
+                mContext.getText(R.string.edit_failed),
                 Toast.LENGTH_SHORT
             ).show()
         }

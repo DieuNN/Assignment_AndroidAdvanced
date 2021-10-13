@@ -8,9 +8,9 @@
     <TextView
         android:padding="16dp"
         android:visibility="invisible"
-        android:id="@+id/txtIsSemesterEmpty"
+        android:id="@+id/txtSemesterListEmpty"
         android:textStyle="bold"
-        android:text="There is no semester now, add something by click 'add' button!"
+        android:text="@string/empty_list"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:layout_width="wrap_content"

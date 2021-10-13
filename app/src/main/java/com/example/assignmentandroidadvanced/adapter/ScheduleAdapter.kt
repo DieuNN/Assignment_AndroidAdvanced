@@ -34,9 +34,9 @@ class ScheduleAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.order.text = "Order: ${scheduleList[position].Id.toString()}"
-        holder.semesterName.text = "Semester: ${scheduleList[position].semesterName}"
-        holder.className.text = "Class: ${ scheduleList[position].className}"
+        holder.order.text = "Thứ tự: ${scheduleList[position].Id.toString()}"
+        holder.semesterName.text = "Kỳ học: ${scheduleList[position].semesterName}"
+        holder.className.text = "Lớp: ${ scheduleList[position].className}"
         holder.startTime.text = scheduleList[position].fromHour
         holder.endTime.text = scheduleList[position].toHour
         holder.note.text = scheduleList[position].note
@@ -44,19 +44,19 @@ class ScheduleAdapter(
         holder.scheduleItem.setOnLongClickListener {
             val scheduleDB = ScheduleDB(Database(mContext))
             AlertDialog.Builder(mContext).apply {
-                setTitle("Delete?")
-                setNegativeButton("Cancel") {dialog, _ ->
+                setTitle(mContext.getText(R.string.confirm_delete))
+                setNegativeButton(mContext.getText(R.string.cancel)) {dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("OK") {_, _ ->
+                setPositiveButton(mContext.getText(R.string.delete)) {_, _ ->
                     if(scheduleDB.removeSchedule(scheduleList[position].Id)) {
-                        Toast.makeText(mContext, "Deleted!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.delete_successfully), Toast.LENGTH_SHORT).show()
                         this@ScheduleAdapter.notifyItemRemoved(position)
                         scheduleList.clear()
                         scheduleList = scheduleDB.getAllSchedule()
                         this@ScheduleAdapter.notifyItemRangeChanged(position, scheduleList.size)
                     } else{
-                        Toast.makeText(mContext, "Delete failed!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.delete_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             }.create().show()

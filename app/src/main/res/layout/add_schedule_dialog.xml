@@ -12,22 +12,33 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <TextView
+            android:text="@string/semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <Spinner
             android:id="@+id/spinnerScheduleSemesterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <TextView
+            android:text="@string/class_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <Spinner
             android:id="@+id/spinnerScheduleClassName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:text="@string/course"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <Spinner
             android:id="@+id/spinnerScheduleCourseName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_height="wrap_content" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edtLayoutScheduleStartTime"
@@ -43,7 +54,7 @@
                 android:id="@+id/edtScheduleStartTime"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Start time" />
+                android:hint="@string/start_date" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +71,7 @@
                 android:id="@+id/edtScheduleEndTime"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="End time" />
+                android:hint="@string/end_date" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -74,7 +85,7 @@
                 android:id="@+id/edtScheduleNote"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Note" />
+                android:hint="@string/note" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

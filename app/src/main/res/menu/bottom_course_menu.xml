@@ -3,18 +3,18 @@
     <item
         android:id="@+id/menu_schedule"
         android:icon="@drawable/ic_baseline_calendar_today_24"
-        android:title="Schedule" />
+        android:title="@string/schedule" />
     <item
         android:id="@+id/menu_class"
         android:icon="@drawable/class_icon"
-        android:title="Class" />
+        android:title="@string/class_course" />
     <item
         android:id="@+id/menu_course"
         android:icon="@drawable/online_course"
-        android:title="Course" />
+        android:title="@string/course" />
 
     <item
         android:id="@+id/menu_semester"
         android:icon="@drawable/semester"
-        android:title="Semester" />
+        android:title="@string/semester" />
 </menu>

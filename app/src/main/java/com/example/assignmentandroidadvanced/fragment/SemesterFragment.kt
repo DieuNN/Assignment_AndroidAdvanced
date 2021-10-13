@@ -47,7 +47,7 @@ class SemesterFragment : Fragment() {
 
     private fun addSemester() {
         AlertDialog.Builder(requireContext()).apply {
-            setMessage("Add new semester!")
+            setMessage(requireContext().getText(R.string.add_semester))
             val view =
                 LayoutInflater.from(requireContext()).inflate(R.layout.add_semester_dialog, null)
 
@@ -98,12 +98,12 @@ class SemesterFragment : Fragment() {
             }
 
             setView(view)
-            setNegativeButton("Cancel") { dialog, _ ->
+            setNegativeButton(requireContext().getText(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
-            setPositiveButton("Add") { _, _ ->
+            setPositiveButton(requireContext().getText(R.string.add_semester)) { _, _ ->
                 if (name.text!!.isBlank() || startDate.text!!.isBlank() || endDate.text!!.isBlank() || note.text!!.isBlank()) {
-                    Toast.makeText(requireContext(), "Empty!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), requireContext().getText(R.string.information_must_not_empty), Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
                 insertIntoDatabase(
@@ -119,19 +119,19 @@ class SemesterFragment : Fragment() {
 
     private fun controlIsEmptyText() {
         if (semesterDB.getAllSemesters().isEmpty()) {
-            binding.txtIsSemesterEmpty.visibility = View.VISIBLE
+            binding.txtSemesterListEmpty.visibility = View.VISIBLE
         } else {
-            binding.txtIsSemesterEmpty.visibility = View.INVISIBLE
+            binding.txtSemesterListEmpty.visibility = View.INVISIBLE
         }
     }
 
     private fun insertIntoDatabase(name: String, startDate: String, endDate: String, note: String) {
         if (semesterDB.newSemester(name, startDate, endDate, note)) {
-            Toast.makeText(requireContext(), "Added successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_successfully), Toast.LENGTH_SHORT).show()
             controlIsEmptyText()
             setupListView()
         } else {
-            Toast.makeText(requireContext(), "Semester has already added", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), requireContext().getText(R.string.add_failed), Toast.LENGTH_SHORT)
                 .show()
         }
     }

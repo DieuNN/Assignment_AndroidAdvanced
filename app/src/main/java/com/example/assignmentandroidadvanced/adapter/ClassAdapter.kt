@@ -29,9 +29,9 @@ class ClassAdapter(private val mContext: Context,private var classList:ArrayList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.className.text = "Class: ${classList[position].name}"
-        holder.semesterName.text = "Semester: ${classList[position].semesterName}"
-        holder.note.text = classList[position].note
+        holder.className.text = "Lớp: ${classList[position].name}"
+        holder.semesterName.text = "Kỳ học: ${classList[position].semesterName}"
+        holder.note.text = "Ghi chú: ${classList[position].note}"
         
         holder.btnEdit.setOnClickListener {
             AlertDialog.Builder(mContext).apply {
@@ -52,14 +52,14 @@ class ClassAdapter(private val mContext: Context,private var classList:ArrayList
                 semesterName.adapter = ArrayAdapter<String>(mContext, android.R.layout.simple_dropdown_item_1line, semesterList)
 
                 setView(view)
-                setTitle("Edit class!")
-                setMessage("Hint:If no semester available, add semester and try again!")
-                setNegativeButton("Cancel") { dialog, _ ->
+                setTitle(mContext.getText(R.string.edit_class))
+                setMessage(mContext.getText(R.string.spinner_hint))
+                setNegativeButton(mContext.getText(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("Add") {_, _->
+                setPositiveButton(mContext.getText(R.string.edit)) {_, _->
                     if(className.text.isNullOrBlank() || semesterName.isEmpty() || note.text.isNullOrBlank()) {
-                        Toast.makeText(mContext, "Empty!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.information_must_not_empty), Toast.LENGTH_SHORT).show()
                     } else {
                         insertIntoDatabase(className.text.toString(), semesterName.selectedItem.toString(), note.text.toString())
                         classList.clear()
@@ -72,19 +72,19 @@ class ClassAdapter(private val mContext: Context,private var classList:ArrayList
 
         holder.classItem.setOnLongClickListener {
             AlertDialog.Builder(mContext).apply {
-                setTitle("Delete class?")
-                setNegativeButton("Cancel") {dialog, _ ->
+                setTitle(mContext.getText(R.string.delete_class))
+                setNegativeButton(mContext.getText(R.string.cancel)) {dialog, _ ->
                     dialog.dismiss()
                 }
-                setPositiveButton("OK") {_, _ ->
+                setPositiveButton(mContext.getText(R.string.delete)) {_, _ ->
                     if(ClassDB(Database(mContext)).removeClass(classList[position].name)) {
-                        Toast.makeText(mContext, "Removed!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.delete_successfully), Toast.LENGTH_SHORT).show()
                         this@ClassAdapter.notifyItemRemoved(position)
                         classList.clear()
                         classList = ClassDB(Database(mContext)).getAllClasses()
                         this@ClassAdapter.notifyItemRangeChanged(position, classList.size)
                     } else {
-                        Toast.makeText(mContext, "Remove failed!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, mContext.getText(R.string.delete_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             }.create().show()
@@ -101,9 +101,9 @@ class ClassAdapter(private val mContext: Context,private var classList:ArrayList
     private fun insertIntoDatabase(className:String, semesterName:String, note:String) {
         val classDB = ClassDB(Database(mContext))
         if(classDB.editClass(className, semesterName, note)) {
-            Toast.makeText(mContext, "Edit successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, mContext.getText(R.string.edit_successfully), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(mContext, "Edit failed!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, mContext.getText(R.string.edit_failed), Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -10,7 +10,7 @@
         android:visibility="invisible"
         android:id="@+id/txtIsCourseListEmpty"
         android:textStyle="bold"
-        android:text="There is no course now, add something by click 'add' button!"
+        android:text="@string/empty_list"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:layout_width="wrap_content"
