@@ -7,10 +7,10 @@
         <entry key="app/src/main/res/layout/activity_course.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_launcher.xml" value="0.16995947315096252" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1621376811594203" />
-        <entry key="app/src/main/res/layout/activity_map.xml" value="0.16995947315096252" />
+        <entry key="app/src/main/res/layout/activity_map.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_news.xml" value="0.16312056737588654" />
         <entry key="app/src/main/res/layout/activity_news_webview.xml" value="0.32019927536231885" />
-        <entry key="app/src/main/res/layout/activity_social.xml" value="0.16312056737588654" />
+        <entry key="app/src/main/res/layout/activity_social.xml" value="0.22" />
         <entry key="app/src/main/res/layout/add_class_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_course_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/add_schedule_dialog.xml" value="0.25" />

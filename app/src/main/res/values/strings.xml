@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Study App</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="google_api_key">AIzaSyDZY7HkkjWmJAcgCwWbj7Soa1zf56X8ZbA</string>
+    <string name="facebook_app_id">293972325652615</string>
+    <string name="fb_login_protocol_scheme">fb293972325652615</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_idea">Ứng dụng quản lý học tập cho sinh viên!</string>
     <string name="course">Khóa học</string>
@@ -37,4 +40,5 @@
     <string name="edit_class">Thêm lớp</string>
     <string name="delete_class">Xóa khóa học?</string>
     <string name="add_class">`Thêm lớp mới</string>
+    <string name="enter_address">Nhập địa chỉ tìm kiếm</string>
 </resources>
